@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs")%>
+
+<body>
+<% if (posts && posts.length > 0) { %>
+    <div class="full-posts">
+        <% posts.forEach(post => { %>
+            <a href="/post/<%= post.id %>">
+                <div class="card"> 
+                    <div class="container">  
+                        <h2><%= post.title %></h2>
+                        <img src="/images/<%= post.img %>.png" class="blogimg" alt="blog image">
+                        
+                        <!-- Delete Post -->
+                        <form action="/delete/<%= post.id %>" method="POST" style="text-align: center;">
+                            <button type="submit">Delete</button>
+                        </form> 
+            
+                        <% if (post.content && post.content !== '') { %>
+                            <h3><%= post.content.slice(0, 100) %>...</h3>
+                        <% } %>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+<% } else { %>
+    <!-- Default Card -->
+    <div class="card">
+        <h2><b>Sample Post</b></h2>
+        <img src="/images/tech.png" class="blogimg" alt="Preview Image">
+        <div class="container">
+            <h3>Create a Post</h3>
+        </div>
+    </div>
+<% } %>
+
+<%- include("partials/footer.ejs")%>   
+</body>
+
+</html>

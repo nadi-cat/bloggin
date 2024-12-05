@@ -1,0 +1,16 @@
+<%- include("partials/header.ejs")%>
+
+<body>
+        <div class="card">
+            <h2><%= post.title %></h2>
+            <div class="contain">
+                <a href="/edit/<%= post.id %>">Edit Post</a>
+                <p><strong>Category:</strong> <%= post.category %></p>
+                <h3><%= post.content %></h3>
+                
+            </div>
+        </div>
+<%- include("partials/footer.ejs")%>
+</body>
+
+</html>
